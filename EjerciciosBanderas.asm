@@ -33,6 +33,7 @@ ENDM
         dw '          ||        0: Salir                                  ||',0ah,0dh 
         dw '          ||                                                  ||',0ah,0dh
         dw '          ||        Selecione una opcion para empezar         ||',0ah,0dh
+        dw '          ||                                                  ||',0ah,0dh
         dw '           ====================================================',0ah,0dh
         dw '$',0ah,0dh           
                 
@@ -41,7 +42,9 @@ ENDM
         mensajeAl   db      'Bandera de Alemania  $' ; el $ indica el fin.  
         mensajeMX   db      'Bandera de Mexico    $' ; el $ indica el fin.
         mensajeF    db      'Bandera de Francia   $' ; el $ indica el fin.
-        mensajeH    db      'Bandera de Holanda   $' ; el $ indica el fin.
+        mensajeH    db      'Bandera de Holanda   $' ; el $ indica el fin.  
+        mensajeB    db      '                     Gracias por utilizar el programa!!   $' ; el $ indica el fin.
+        espacio db 10,13,'$'
 .code 
         mov     ax,@data
         mov     ds,ax
@@ -86,47 +89,43 @@ CostaRica proc near:
 
          ;Azul
          mov ah, 06h 
-         mov bh, 9fh   ;cambia el color de letra y fondo
-         mov cx,0000h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,054fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)
+         mov bh, 9fh   ;cambia fondo y el color de letra
+         mov cx,0000h  ;Inicio Fila,Columna
+         mov dx,054fh  ;Final Fila,Columna
+         int 10h       
                                                            
          ;Blanco
          mov ah, 06h 
-         mov bh, 0ffh   ;cambia el color de letra y fondo
-         mov cx,0500h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,0a4fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)                                                           
+         mov bh, 0ffh  ;cambia fondo y el color de letra
+         mov cx,0500h  ;Inicio Fila,Columna
+         mov dx,0a4fh  ;Final Fila,Columna
+         int 10h                                                                
          
           
          ;Rojo
          mov ah, 06h 
-         mov bh, 4fh   ;cambia el color de letra y fondo
-         mov cx,0a00h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,0f4fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)                                                           
+         mov bh, 4fh   ;cambia fondo y el color de letra
+         mov cx,0a00h  ;Inicio Fila,Columna
+         mov dx,0f4fh  ;Final Fila,Columna
+         int 10h                                                                 
          
          ;Blanco
          mov ah, 06h 
-         mov bh, 0ffh   ;cambia el color de letra y fondo
-         mov cx,0f00h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,144fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)                                                           
+         mov bh, 0ffh  ;cambia fondo y el color de letra
+         mov cx,0f00h  ;Inicio Fila,Columna
+         mov dx,144fh  ;Final Fila,Columna
+         int 10h                                                                  
          
          ;Azul
          mov ah, 06h 
-         mov bh, 9fh   ;cambia el color de letra y fondo
-         mov cx,1400h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,194fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)
+         mov bh, 9fh   ;cambia fondo y el color de letra
+         mov cx,1400h  ;Inicio Fila,Columna
+         mov dx,194fh  ;Final Fila,Columna
+         int 10h       
          
-         
-          
-         lea     dx,mensajeCR
-         mov     ah,9h
-         int     21h   ; saca el mensaje por pantalla  
-         
-         mov ah,1              ;Esperamos que se digite una tecla
+         imprime mensajeCR;saca el mensaje por pantalla 
+             
+         mov ah,1      ;Esperamos que se digite una tecla
          Int 21h    
          ret
 endp         
@@ -135,34 +134,31 @@ Alemania proc near:
 
          ;Celeste
          mov ah, 06h 
-         mov bh, 9fh   ;cambia el color de letra y fondo
-         mov cx,0000h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,084fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)
+         mov bh, 9fh   ;cambia fondo y el color de letra
+         mov cx,0000h  ;Inicio Fila,Columna
+         mov dx,084fh  ;Final Fila,Columna
+         int 10h       
                                                            
          ;Blanco
          mov ah, 06h 
-         mov bh, 0ffh   ;cambia el color de letra y fondo
-         mov cx,0800h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,114fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)                                                           
+         mov bh, 0ffh  ;cambia fondo y el color de letra
+         mov cx,0800h  ;Inicio Fila,Columna
+         mov dx,114fh  ;Final Fila,Columna
+         int 10h       
          
         
          ;celeste
          mov ah, 06h 
-         mov bh, 9fh   ;cambia el color de letra y fondo
-         mov cx,1100h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,194fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)
+         mov bh, 9fh   ;cambia fondo y el color de letra
+         mov cx,1100h  ;Inicio Fila,Columna
+         mov dx,194fh  ;Final Fila,Columna
+         int 10h       
          
          
           
-         lea     dx,mensajeAl
-         mov     ah,9h
-         int     21h   ; saca el mensaje por pantalla  
+         imprime mensajeAl
          
-         
-         mov ah,1              ;Esperamos que se digite una tecla
+         mov ah,1      ;Esperamos que se digite una tecla
          Int 21h    
          ret 
 endp  
@@ -171,34 +167,32 @@ Mexico proc near:
 
          ;Verde
          mov ah, 06h 
-         mov bh, 2fh   ;cambia el color de letra y fondo
-         mov cx,0000h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,191ah  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)
+         mov bh, 2fh   ;cambia fondo y el color de letra
+         mov cx,0000h  ;Inicio Fila,Columna
+         mov dx,191ah  ;Final Fila,Columna
+         int 10h       
                                                            
          ;Blanco
          mov ah, 06h 
-         mov bh, 0ffh  ;cambia el color de letra y fondo
-         mov cx,001bh  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,1936h  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)                                                           
+         mov bh, 0ffh  ;cambia fondo y el color de letra
+         mov cx,001bh  ;Inicio Fila,Columna
+         mov dx,1936h  ;Final Fila,Columna
+         int 10h       
          
         
          ;Rojo
          mov ah, 06h 
-         mov bh, 4fh   ;cambia el color, de letra y fondo
-         mov cx,0037h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,194fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)                                                           
+         mov bh, 4fh   ;cambia fondo y el color de letra
+         mov cx,0037h  ;Inicio Fila,Columna
+         mov dx,194fh  ;Final Fila,Columna
+         int 10h       
          
          
           
-         lea     dx,mensajemx
-         mov     ah,9h
-         int     21h   ; saca el mensaje por pantalla     
+         imprime mensajemx
          
          
-         mov ah,1              ;Esperamos que se digite una tecla
+         mov ah,1      ;Esperamos que se digite una tecla
          Int 21h    
          ret
 endp
@@ -207,34 +201,29 @@ Francia proc near:
 
          ;Azul
          mov ah, 06h 
-         mov bh, 9fh   ;cambia el color de letra y fondo
-         mov cx,0000h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,191ah  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)
+         mov bh, 9fh   ;cambia fondo y el color de letra
+         mov cx,0000h  ;Inicio Fila,Columna
+         mov dx,191ah  ;Final Fila,Columna
+         int 10h       
                                                            
          ;Blanco
          mov ah, 06h 
-         mov bh, 0ffh  ;cambia el color de letra y fondo
-         mov cx,001bh  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,1936h  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)                                                           
+         mov bh, 0ffh  ;cambia fondo y el color de letra
+         mov cx,001bh  ;Inicio Fila,Columna
+         mov dx,1936h  ;Final Fila,Columna
+         int 10h       
          
         
          ;Rojo
          mov ah, 06h 
-         mov bh, 4fh   ;cambia el color, de letra y fondo
-         mov cx,0037h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,194fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)                                                           
+         mov bh, 4fh   ;cambia fondo y el color de letra
+         mov cx,0037h  ;Inicio Fila,Columna
+         mov dx,194fh  ;Final Fila,Columna
+         int 10h       
          
+         imprime mensajef
          
-          
-         lea     dx,mensajef
-         mov     ah,9h
-         int     21h   ; saca el mensaje por pantalla 
-         
-         
-         mov ah,1              ;Esperamos que se digite una tecla
+         mov ah,1      ;Esperamos que se digite una tecla
          Int 21h    
          ret  
 endp
@@ -244,48 +233,42 @@ Holanda proc near:
          ;Rojo
          mov ah, 06h 
          mov bh, 4fh   ;cambia el color de letra y fondo
-         mov cx,0000h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,084fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)
+         mov cx,0000h  ;Inicio Fila,Columna
+         mov dx,084fh  ;Final Fila,Columna
+         int 10h       
                                                            
          ;Blanco
          mov ah, 06h 
-         mov bh, 0ffh   ;cambia el color de letra y fondo
-         mov cx,0800h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,114fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)                                                           
+         mov bh, 0ffh  ;cambia el color de letra y fondo
+         mov cx,0800h  ;Inicio Fila,Columna
+         mov dx,114fh  ;Final Fila,Columna
+         int 10h      
          
         
          ;Azul
          mov ah, 06h 
          mov bh, 9fh   ;cambia el color de letra y fondo
-         mov cx,1100h  ;dond inicia en fila y columna a colorear     fila de inicio,columna de inicio
-         mov dx,194fh  ;hasta que fila y columna llega coloreando    fila donde termino y columna donde se termina
-         int 10h       ;hasta fila 25(18h), columna 80(4Fh)
+         mov cx,1100h  ;Inicio Fila,Columna
+         mov dx,194fh  ;Final Fila,Columna
+         int 10h       
          
+         imprime mensajeH
          
-          
-         lea     dx,mensajeH
-         mov     ah,9h
-         int     21h   ; saca el mensaje por pantalla  
-         
-         
-         mov ah,1              ;Esperamos que se digite una tecla
+         mov ah,1      ;Esperamos que se digite una tecla
          Int 21h    
          ret 
 endp  
 
 ;-----------------------------------------------------------------------------------------------------------------
-;-----------------------------------------------------------------------------------------------------------------
-;-----------------------------------------------------------------------------------------------------------------
-;-----------------------------------------------------------------------------------------------------------------
-
-
+salir:
+    mov cx,23h
+    ciclo:
+        imprime espacio 
+    loop ciclo
+    imprime mensajeB
     
-salir:    
-    mov ax,4c00h
-    int 21h
+    mov  ax, 4C00h
+    int  21h
          
-         
-         
+;-----------------------------------------------------------------------------------------------------------------         
         
